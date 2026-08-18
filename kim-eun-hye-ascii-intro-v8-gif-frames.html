@@ -8,6 +8,12 @@
   :root {
     --bg:#dcdcda;
     --ink:#2b2ab8;
+    /* 문자 밀도에 따른 5단계 음영 (옅음 → 짙음) */
+    --t1:#a9a8de;
+    --t2:#8280d3;
+    --t3:#5754c6;
+    --t4:#2f2eb5;
+    --t5:#1b1a7d;
   }
   * { box-sizing:border-box; }
   html, body {
@@ -54,6 +60,13 @@
     transform:translate3d(0,0,0);
     will-change:contents, transform;
   }
+  .ascii i { font-style:normal; }
+  .ascii .t1 { color:var(--t1); }
+  .ascii .t2 { color:var(--t2); }
+  .ascii .t3 { color:var(--t3); }
+  .ascii .t4 { color:var(--t4); }
+  .ascii .t5 { color:var(--t5); }
+
   .stage.exit .ascii-wrap {
     opacity:0;
     transform:scale(1.38);
@@ -388,6 +401,22 @@ requestAnimationFrame(() => {
 
 window.addEventListener('resize', buildNameScene);
 
+// 문자 밀도 → 음영 단계. 옅은 문자는 밝게, 꽉 찬 문자는 짙게 칠한다.
+const TONE = { '.':1, ':':1, '-':2, '=':2, '+':3, '*':3, '#':4, '%':4, '@':5 };
+
+// 프레임마다 색칠한 HTML 을 한 번만 만들어 둔다 (재생 중에는 문자열만 갈아 끼운다)
+const TINTED = FRAMES.map(f => {
+  let out = '', run = '', tone = 0;
+  const flush = () => { if (run) out += tone ? `<i class="t${tone}">${run}</i>` : run; run = ''; };
+  for (const ch of f) {
+    const t = TONE[ch] || 0;
+    if (t !== tone) { flush(); tone = t; }
+    run += ch;
+  }
+  flush();
+  return out;
+});
+
 const FRAME_MS = 80;
 const LOOPS = 2;
 let frame = 0;
@@ -403,12 +432,12 @@ function playIntro() {
   fireworksActive = false;
   sparks = [];
   fctx.clearRect(0,0,window.innerWidth,window.innerHeight);
-  ascii.textContent = FRAMES[0];
+  ascii.innerHTML = TINTED[0];
 
   // small hold before movement begins
   setTimeout(() => {
     timer = setInterval(() => {
-      ascii.textContent = FRAMES[frame];
+      ascii.innerHTML = TINTED[frame];
       frame++;
 
       if(frame >= FRAMES.length) {
@@ -445,11 +474,18 @@ function playIntro() {
 // index.html 안에 iframe으로 얹혔을 때만 부모에게 종료를 알린다 (단독으로 열면 그대로 유지)
 const embedded = window.parent !== window;
 function finish() {
+  clearInterval(aliveTimer);
   if (embedded) parent.postMessage('intro-done', '*');
 }
 
-// 부모에게 "이 파일 정상적으로 떴다"고 즉시 알린다 (404면 이 신호가 안 감)
-if (embedded) parent.postMessage('intro-alive', '*');
+// 부모에게 "정상적으로 떴다"고 알린다. 부모의 수신 준비가 늦을 수 있으니
+// 한 번만 보내지 않고 인트로가 끝날 때까지 계속 보낸다. (404면 이 신호가 아예 안 감)
+let aliveTimer = null;
+if (embedded) {
+  const ping = () => parent.postMessage('intro-alive', '*');
+  ping();
+  aliveTimer = setInterval(ping, 250);
+}
 
 // 임베드 중엔 클릭 = 건너뛰기, 단독 실행이면 처음부터 다시 재생
 window.addEventListener('click', () => (embedded ? finish() : playIntro()));

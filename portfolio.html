@@ -1,0 +1,981 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eunhye — Photography Portfolio Hero</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Inter+Display:wght@500;600&display=swap');
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', sans-serif;
+      background: white;
+      overflow: hidden;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      user-select: none;
+    }
+
+    @keyframes springIn {
+      0% {
+        opacity: 0;
+        transform: scale(0.8);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    .spring-in {
+      animation: springIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    }
+
+    /* ==========================================================================
+       macOS Genuine Trapezoidal Genie Suction (진짜 맥 OS 지니 사다리꼴 흡입 왜곡)
+       ========================================================================== */
+
+    @keyframes genuineGenieMinimize {
+      0% {
+        opacity: 1;
+        clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+        transform: translate(var(--win-x, 0px), var(--win-y, 0px)) scale(1, 1) rotateX(0deg) skewX(0deg);
+        transform-origin: bottom center;
+        box-shadow: 0 32px 80px rgba(0, 0, 0, 0.28);
+      }
+      20% {
+        opacity: 1;
+        clip-path: polygon(0% 0%, 100% 0%, var(--tip-r, 92%) 100%, var(--tip-l, 72%) 100%);
+        transform: translate(
+            calc(var(--win-x, 0px) + var(--target-x, 0px) * 0.2),
+            calc(var(--win-y, 0px) + var(--target-y, 0px) * 0.22)
+          )
+          scale(0.88, 1.04)
+          rotateX(8deg)
+          skewX(calc(var(--skew-dir, 0deg) * 1.2));
+      }
+      50% {
+        opacity: 0.96;
+        clip-path: polygon(0% 0%, 100% 0%, var(--tip-r, 96%) 100%, var(--tip-l, 86%) 100%);
+        transform: translate(
+            calc(var(--win-x, 0px) + var(--target-x, 0px) * 0.58),
+            calc(var(--win-y, 0px) + var(--target-y, 0px) * 0.54)
+          )
+          scale(0.58, 0.76)
+          rotateX(18deg)
+          skewX(calc(var(--skew-dir, 0deg) * 2.2));
+      }
+      78% {
+        opacity: 0.88;
+        clip-path: polygon(10% 10%, 90% 10%, var(--tip-r, 98%) 100%, var(--tip-l, 90%) 100%);
+        transform: translate(
+            calc(var(--win-x, 0px) + var(--target-x, 0px) * 0.86),
+            calc(var(--win-y, 0px) + var(--target-y, 0px) * 0.84)
+          )
+          scale(0.24, 0.38)
+          rotateX(12deg)
+          skewX(calc(var(--skew-dir, 0deg) * 1.4));
+      }
+      94% {
+        opacity: 0.4;
+        clip-path: polygon(40% 40%, 60% 40%, var(--tip-r, 98%) 100%, var(--tip-l, 92%) 100%);
+        transform: translate(
+            calc(var(--win-x, 0px) + var(--target-x, 0px) * 0.98),
+            calc(var(--win-y, 0px) + var(--target-y, 0px) * 0.97)
+          )
+          scale(0.08, 0.1)
+          skewX(0deg);
+      }
+      100% {
+        opacity: 0;
+        clip-path: polygon(50% 100%, 50% 100%, 50% 100%, 50% 100%);
+        transform: translate(var(--target-x, 0px), var(--target-y, 0px)) scale(0.01, 0.01);
+        box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+      }
+    }
+
+    @keyframes genuineGenieRestore {
+      0% {
+        opacity: 0;
+        clip-path: polygon(50% 100%, 50% 100%, 50% 100%, 50% 100%);
+        transform: translate(var(--target-x, 0px), var(--target-y, 0px)) scale(0.01, 0.01);
+        transform-origin: bottom center;
+      }
+      22% {
+        opacity: 0.7;
+        clip-path: polygon(30% 30%, 70% 30%, var(--tip-r, 96%) 100%, var(--tip-l, 86%) 100%);
+        transform: translate(
+            calc(var(--win-x, 0px) + var(--target-x, 0px) * 0.8),
+            calc(var(--win-y, 0px) + var(--target-y, 0px) * 0.78)
+          )
+          scale(0.28, 0.42)
+          rotateX(12deg)
+          skewX(calc(var(--skew-dir, 0deg) * 1.4));
+      }
+      55% {
+        opacity: 0.94;
+        clip-path: polygon(0% 0%, 100% 0%, var(--tip-r, 94%) 100%, var(--tip-l, 82%) 100%);
+        transform: translate(
+            calc(var(--win-x, 0px) + var(--target-x, 0px) * 0.4),
+            calc(var(--win-y, 0px) + var(--target-y, 0px) * 0.36)
+          )
+          scale(0.68, 0.86)
+          rotateX(16deg)
+          skewX(calc(var(--skew-dir, 0deg) * 1.8));
+      }
+      85% {
+        opacity: 0.98;
+        clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+        transform: translate(
+            calc(var(--win-x, 0px) + var(--target-x, 0px) * 0.06),
+            calc(var(--win-y, 0px) + var(--target-y, 0px) * 0.06)
+          )
+          scale(0.98, 1.02)
+          rotateX(4deg)
+          skewX(0deg);
+      }
+      100% {
+        opacity: 1;
+        clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+        transform: translate(var(--win-x, 0px), var(--win-y, 0px)) scale(1, 1) rotateX(0deg) skewX(0deg);
+        box-shadow: 0 32px 80px rgba(0, 0, 0, 0.28);
+      }
+    }
+
+    .genie-minimizing {
+      animation: genuineGenieMinimize 0.32s cubic-bezier(0.16, 1, 0.3, 1) forwards !important;
+      pointer-events: none !important;
+    }
+
+    .genie-restoring {
+      animation: genuineGenieRestore 0.34s cubic-bezier(0.16, 1, 0.3, 1) forwards !important;
+    }
+
+    /* Card Hover Animations */
+    .project-card {
+      position: absolute;
+      z-index: 2;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .project-card .img-wrapper {
+      padding: 12px;
+      border-radius: 8px;
+      border: 2px solid transparent;
+      background: transparent;
+      transition: background 0.18s ease, border-color 0.18s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .project-card:hover .img-wrapper {
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      background: rgba(0, 0, 0, 0.16);
+    }
+
+    .project-card .thumb-img {
+      width: 80px;
+      height: auto;
+      border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0px 1px 6px 0px rgba(0, 0, 0, 0.08);
+      display: block;
+      pointer-events: none;
+    }
+
+    .project-card .title-label {
+      background: transparent;
+      padding: 4px 0;
+      border-radius: 4px;
+      transition: background 0.18s ease, padding 0.18s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .project-card:hover .title-label {
+      background: rgb(0, 102, 221);
+      padding: 4px 8px;
+    }
+
+    .project-card .title-text {
+      font-family: 'Inter', sans-serif;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 1.4em;
+      letter-spacing: -0.04em;
+      color: rgb(247, 247, 247);
+      white-space: nowrap;
+    }
+
+    /* Dock styles */
+    .dock-container {
+      position: absolute;
+      bottom: 64px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 4;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 16px;
+      padding: 12px 18px;
+      border-radius: 24px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(5px);
+      -webkit-backdrop-filter: blur(5px);
+    }
+
+    .dock-item {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .dock-btn {
+      width: 48px;
+      height: 48px;
+      border-radius: 28%;
+      overflow: hidden;
+      border: none;
+      background: none;
+      padding: 0;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .dock-item:hover .dock-btn {
+      transform: scale(1.12);
+    }
+
+    .dock-btn img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      pointer-events: none;
+    }
+
+    .minimized-dot {
+      position: absolute;
+      bottom: -7px;
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background-color: rgba(255, 255, 255, 0.95);
+      box-shadow: 0 0 6px rgba(255,255,255,0.8);
+      display: none;
+    }
+
+    .dock-item.minimized .minimized-dot {
+      display: block;
+    }
+
+    /* Tooltip */
+    .dock-tooltip {
+      position: absolute;
+      bottom: calc(100% + 12px);
+      left: 50%;
+      transform: translateX(-50%);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.15s ease, transform 0.15s ease;
+      z-index: 10;
+    }
+
+    .dock-item:hover .dock-tooltip {
+      opacity: 1;
+    }
+
+    .dock-tooltip-pill {
+      position: relative;
+      background: white;
+      padding: 6px 12px;
+      border-radius: 64px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+      font-family: 'Inter', sans-serif;
+      font-weight: 500;
+      font-size: 12px;
+      letter-spacing: -0.04em;
+      color: black;
+      white-space: nowrap;
+    }
+
+    .dock-tooltip-triangle {
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 0;
+      border-left: 5px solid transparent;
+      border-right: 5px solid transparent;
+      border-top: 6px solid white;
+    }
+
+    .dock-divider {
+      width: 1px;
+      height: 48px;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 64px;
+    }
+
+    /* Modal Overlay & Shell */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 50;
+      pointer-events: none;
+    }
+
+    .modal-overlay.active {
+      display: flex;
+    }
+
+    .modal-backdrop {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.35);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      pointer-events: all;
+      transition: opacity 0.3s ease;
+    }
+
+    .modal-panel {
+      position: relative;
+      width: 60vw;
+      max-width: 720px;
+      max-height: 70vh;
+      border-radius: 24px;
+      background: white;
+      box-shadow: 0 32px 80px rgba(0, 0, 0, 0.28);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      z-index: 51;
+      pointer-events: all;
+      transform-origin: bottom center;
+      animation: springIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    }
+
+    .modal-panel.wide {
+      width: 70vw;
+      max-width: 840px;
+    }
+
+    .title-bar {
+      height: 40px;
+      padding: 0 16px;
+      border-bottom: 1px solid rgb(229, 229, 234);
+      cursor: grab;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-shrink: 0;
+      background: rgba(255, 255, 255, 0.95);
+      user-select: none;
+    }
+
+    .traffic-lights {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .traffic-light {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: transform 0.15s ease, filter 0.15s ease;
+    }
+
+    .traffic-close { background-color: rgb(253, 93, 92); }
+    .traffic-min { background-color: rgb(250, 201, 0); }
+    .traffic-max { background-color: rgb(52, 199, 90); }
+
+    .modal-title-text {
+      font-family: 'Inter', sans-serif;
+      font-weight: 400;
+      font-size: 16px;
+      color: rgb(134, 134, 139);
+      letter-spacing: -0.04em;
+      text-align: center;
+      flex: 1;
+      padding-right: 36px;
+    }
+
+    .modal-body {
+      flex: 1;
+      overflow-y: auto;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.15); border-radius: 9999px; }
+    ::-webkit-scrollbar-thumb:hover { background: rgba(0,0,0,0.3); }
+  </style>
+</head>
+<body>
+
+  <!-- Root Container -->
+  <div style="width:100%; height:100vh; overflow:hidden; position:relative; background:white;">
+
+    <!-- 1. Background image -->
+    <div style="position:absolute; inset:0; background-image:url('https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260624_151236_784929aa-a992-4292-9938-1dd9b5296a29.png&w=1920&q=85'); background-size:cover; background-position:center;"></div>
+
+    <!-- 2. Gradient overlay -->
+    <div style="position:absolute; inset:0; background:linear-gradient(180deg, rgba(84,84,84,0) 0%, rgb(0,0,0) 100%); opacity:0.4; pointer-events:none;"></div>
+
+    <!-- 3. Bottom blur layer -->
+    <div style="position:absolute; bottom:0; left:50%; transform:translateX(-50%); width:100%; height:47.375%; backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px); mask-image:linear-gradient(to bottom, transparent 0%, black 40%); -webkit-mask-image:linear-gradient(to bottom, transparent 0%, black 40%); z-index:1; pointer-events:none;"></div>
+
+    <!-- Header Overlay -->
+    <div style="position:absolute; top:32px; left:40px; z-index:3; display:flex; flex-direction:column; gap:4px; pointer-events:none;">
+      <span style="font-family:'Inter',sans-serif; font-weight:600; font-size:18px; letter-spacing:-0.03em; color:rgba(255,255,255,0.95);">Eunhye Kim</span>
+      <span style="font-family:'Inter',sans-serif; font-weight:400; font-size:13px; letter-spacing:-0.02em; color:rgba(255,255,255,0.65);">Selected Photographic Works • 2026</span>
+    </div>
+
+    <div style="position:absolute; top:32px; right:40px; z-index:10; display:flex; align-items:center; gap:10px;">
+      <div style="display:flex; align-items:center; gap:8px; padding:8px 16px; border-radius:9999px; background:rgba(255,255,255,0.12); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); border:1px solid rgba(255,255,255,0.2); color:rgba(255,255,255,0.92); font-size:12px; letter-spacing:-0.02em; user-select:none;">
+        <span style="display:inline-block; width:6px; height:6px; border-radius:50%; background-color:#34d399; box-shadow:0 0 8px #34d399;"></span>
+        <span>자유 배치 모드: 아이콘을 마우스로 자유롭게 옮길 수 있습니다</span>
+      </div>
+      <button onclick="resetIconPositions()" style="padding:8px 14px; border-radius:9999px; background:rgba(255,255,255,0.15); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); border:1px solid rgba(255,255,255,0.25); color:white; font-size:12px; font-family:'Inter',sans-serif; font-weight:500; cursor:pointer; outline:none;">
+        배치 초기화
+      </button>
+    </div>
+
+    <!-- 4. Draggable Project Cards Container -->
+    <div id="cards-container"></div>
+
+    <!-- 5. Dock Bar -->
+    <div class="dock-container" id="dock-bar">
+      <!-- About Me -->
+      <div class="dock-item" id="dock-about">
+        <div class="dock-tooltip">
+          <div class="dock-tooltip-pill">About Me<div class="dock-tooltip-triangle"></div></div>
+        </div>
+        <button class="dock-btn" onclick="toggleAboutModal()">
+          <img src="https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260624_151824_5f47765e-d133-4a38-b8bc-d968a07881a3.png&w=1920&q=85" alt="About Me">
+        </button>
+        <div class="minimized-dot"></div>
+      </div>
+
+      <!-- Notes -->
+      <div class="dock-item" id="dock-notes">
+        <div class="dock-tooltip">
+          <div class="dock-tooltip-pill">Notes<div class="dock-tooltip-triangle"></div></div>
+        </div>
+        <button class="dock-btn" onclick="toggleNotesModal()">
+          <img src="https://framerusercontent.com/images/4ar8CL6aUtjymV8jTsXrcPzXCM.svg" alt="Notes">
+        </button>
+        <div class="minimized-dot"></div>
+      </div>
+
+      <!-- Vertical Divider -->
+      <div class="dock-divider"></div>
+
+      <!-- Instagram -->
+      <div class="dock-item">
+        <div class="dock-tooltip">
+          <div class="dock-tooltip-pill">Instagram<div class="dock-tooltip-triangle"></div></div>
+        </div>
+        <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">
+          <button class="dock-btn">
+            <img src="https://framerusercontent.com/images/Q0Z0p8LOZhN2hJ2arLjEtkqQD0.png" alt="Instagram">
+          </button>
+        </a>
+      </div>
+
+      <!-- X -->
+      <div class="dock-item">
+        <div class="dock-tooltip">
+          <div class="dock-tooltip-pill">X<div class="dock-tooltip-triangle"></div></div>
+        </div>
+        <a href="https://www.x.com/" target="_blank" rel="noopener noreferrer">
+          <button class="dock-btn">
+            <img src="https://framerusercontent.com/images/vjmmhizcqEgw5ZT5SNFQMpxD00.png" alt="X">
+          </button>
+        </a>
+      </div>
+
+      <!-- Behance -->
+      <div class="dock-item">
+        <div class="dock-tooltip">
+          <div class="dock-tooltip-pill">Behance<div class="dock-tooltip-triangle"></div></div>
+        </div>
+        <a href="https://www.behance.com/" target="_blank" rel="noopener noreferrer">
+          <button class="dock-btn">
+            <img src="https://framerusercontent.com/images/edJkRGfjqjPajyxmEgsUCKVgjE.png" alt="Behance">
+          </button>
+        </a>
+      </div>
+
+      <!-- Minimized Project Item Container -->
+      <div id="dock-minimized-section" style="display:none; align-items:center; gap:16px;">
+        <div class="dock-divider" style="height:36px;"></div>
+        <div class="dock-item minimized" id="dock-project-item">
+          <div class="dock-tooltip">
+            <div class="dock-tooltip-pill" id="minimized-project-label">Restore<div class="dock-tooltip-triangle"></div></div>
+          </div>
+          <button class="dock-btn" onclick="restoreProjectModal()">
+            <img id="minimized-project-img" src="" alt="Minimized Project">
+          </button>
+          <div class="minimized-dot" style="display:block;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Shared Modal Shell -->
+  <div id="modal-overlay" class="modal-overlay">
+    <div class="modal-backdrop" id="modal-backdrop" onclick="closeModal()"></div>
+    <div id="modal-panel" class="modal-panel">
+      <div class="title-bar" id="modal-title-bar">
+        <div class="traffic-lights">
+          <div class="traffic-light traffic-close" onclick="closeModal()" title="Close (닫기)"></div>
+          <div class="traffic-light traffic-min" onclick="triggerGenieMinimize()" title="Minimize (지니 효과 최소화)"></div>
+          <div class="traffic-light traffic-max" title="Zoom"></div>
+        </div>
+        <div id="modal-title" class="modal-title-text">Window</div>
+      </div>
+      <div id="modal-body" class="modal-body"></div>
+    </div>
+  </div>
+
+  <script>
+    const PROJECTS = [
+      {
+        id: 1,
+        title: "La ou dort l'eau",
+        anchorX: 42.75,
+        anchorY: 48.5,
+        thumbnail: "https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260606_153138_ef8b2e9b-3d18-4b75-8df7-5bc6f0f84fca.png&w=1920&q=85",
+        subtitle: "Series on Aquatic Solitude & Fluid Reflections",
+        year: "2026",
+        location: "Brittany, France",
+        description: "A meditative exploration of tidal rhythms and still waters at twilight. Caught between silence and immersion, this series examines the quiet alchemy where sky and sea dissolve into pure tonal gradation.",
+        cameraInfo: "Leica M11-P • Summilux-M 35mm f/1.4 ASPH • ISO 64"
+      },
+      {
+        id: 2,
+        title: "Champ Silencieux",
+        anchorX: 26,
+        anchorY: 29.5,
+        thumbnail: "https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260609_092743_5be19a2a-e188-4bca-9ed6-74049aa3d83b.png&w=1920&q=85",
+        subtitle: "Mist & Minimalist Geometries in the Pastoral North",
+        year: "2026",
+        location: "Normandy, France",
+        description: "Open fields cloaked in morning vapor. The horizon line becomes an imperceptible thread uniting earth and atmosphere, revealing how emptiness holds immense emotional resonance.",
+        cameraInfo: "Hasselblad 907X 100C • XCD 45P f/4 • ISO 100"
+      },
+      {
+        id: 3,
+        title: "Lisiere",
+        anchorX: 23.33,
+        anchorY: 60.88,
+        thumbnail: "https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260530_012333_aca09e65-227f-4185-a25f-85191cfac44d.png&w=1920&q=85",
+        subtitle: "Thresholds of Ancient Woods & Human Silence",
+        year: "2026",
+        location: "Fontainebleau Forest, France",
+        description: "The edge of the forest is both a boundary and an invitation. Captured in dappled, cinematic shadows where ancient moss-covered oaks emerge from the gloom.",
+        cameraInfo: "Sony A7R V • FE 50mm f/1.2 GM • ISO 80"
+      },
+      {
+        id: 4,
+        title: "Elan Brut",
+        anchorX: 68,
+        anchorY: 62.13,
+        thumbnail: "https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260527_084631_63ecf071-0fd9-42e3-989a-144728ce8ddb.png&w=1920&q=85",
+        subtitle: "Brutalist Momentum & Basalt Monoliths",
+        year: "2026",
+        location: "Vik & Black Sands, Iceland",
+        description: "Unforgiving winds, tectonic power, and volcanic textures. High-contrast monochromatic and deep slate tones sculpted by glacial rivers and oceanic surges.",
+        cameraInfo: "Leica SL3 • APO-Vario-Elmarit-SL 24-90mm • ISO 100"
+      },
+      {
+        id: 5,
+        title: "Les Silences Miroirs",
+        anchorX: 66.08,
+        anchorY: 19.63,
+        thumbnail: "https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260525_053312_b4d2b145-7bb2-4755-b7a0-79a8e81b1265.png&w=1920&q=85",
+        subtitle: "Specular Architectures & Geometric Stillness",
+        year: "2026",
+        location: "Kyoto & Tokyo, Japan",
+        description: "A poetic dialogue between traditional Japanese architectural shadows and hyper-contemporary glass reflections. Time feels paused in perfect equilibrium.",
+        cameraInfo: "Fujifilm GFX 100 II • GF 45-100mm f/4 • ISO 125"
+      },
+      {
+        id: 6,
+        title: "Revolte douce",
+        anchorX: 73.92,
+        anchorY: 40.75,
+        thumbnail: "https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260512_012043_9764f2d0-5c6e-4faa-94a6-a8253df08c5e.png&w=1920&q=85",
+        subtitle: "Soft Rebellion, Warm Grain & Windblown Solitude",
+        year: "2026",
+        location: "Luberon, Provence",
+        description: "Subtle defiance captured in warm amber hues, golden hour breezes, and the lingering presence of quiet human traces in vast landscapes.",
+        cameraInfo: "Contax T3 / Kodak Portra 400 • Carl Zeiss 35mm f/2.8"
+      }
+    ];
+
+    // Current Active Modal State
+    let currentModalType = null; // 'project' | 'about' | 'notes'
+    let currentActiveProject = null;
+    let minimizedProjectData = null;
+    let isAboutMinimized = false;
+    let isNotesMinimized = false;
+
+    // Render Cards
+    const container = document.getElementById('cards-container');
+
+    PROJECTS.forEach(proj => {
+      const card = document.createElement('div');
+      card.className = 'project-card';
+      card.style.left = `calc(${proj.anchorX}% - 52px)`;
+      card.style.top = `calc(${proj.anchorY}% - 64px)`;
+      card.innerHTML = `
+        <div class="img-wrapper">
+          <img class="thumb-img" src="${proj.thumbnail}" alt="${proj.title}">
+        </div>
+        <div class="title-label">
+          <span class="title-text">${proj.title}</span>
+        </div>
+      `;
+
+      let isDragging = false;
+      let startX = 0, startY = 0;
+      let posX = 0, posY = 0;
+      let currentX = 0, currentY = 0;
+      let dragDistance = 0;
+
+      card.addEventListener('mousedown', (e) => {
+        if (e.button !== 0) return;
+        isDragging = true;
+        dragDistance = 0;
+        startX = e.clientX;
+        startY = e.clientY;
+        currentX = posX;
+        currentY = posY;
+
+        const onMouseMove = (moveEv) => {
+          if (!isDragging) return;
+          const dx = moveEv.clientX - startX;
+          const dy = moveEv.clientY - startY;
+          dragDistance = Math.hypot(dx, dy);
+          posX = currentX + dx;
+          posY = currentY + dy;
+          card.style.transform = `translate(${posX}px, ${posY}px)`;
+        };
+
+        const onMouseUp = () => {
+          isDragging = false;
+          window.removeEventListener('mousemove', onMouseMove);
+          window.removeEventListener('mouseup', onMouseUp);
+        };
+
+        window.addEventListener('mousemove', onMouseMove);
+        window.addEventListener('mouseup', onMouseUp);
+      });
+
+      card.addEventListener('click', (e) => {
+        if (dragDistance < 5) {
+          openProjectModal(proj);
+        }
+      });
+
+      container.appendChild(card);
+    });
+
+    function resetIconPositions() {
+      const cards = document.querySelectorAll('.project-card');
+      cards.forEach(c => {
+        c.style.transform = 'translate(0px, 0px)';
+      });
+    }
+
+    // Modal elements
+    const modalOverlay = document.getElementById('modal-overlay');
+    const modalPanel = document.getElementById('modal-panel');
+    const modalTitle = document.getElementById('modal-title');
+    const modalBody = document.getElementById('modal-body');
+    const titleBar = document.getElementById('modal-title-bar');
+    const backdrop = document.getElementById('modal-backdrop');
+
+    // Draggable Modal Logic
+    let isModalDragging = false;
+    let mStartX = 0, mStartY = 0;
+    let mPosX = 0, mPosY = 0;
+    let mCurrentX = 0, mCurrentY = 0;
+
+    titleBar.addEventListener('mousedown', (e) => {
+      if (e.button !== 0) return;
+      isModalDragging = true;
+      mStartX = e.clientX;
+      mStartY = e.clientY;
+      mCurrentX = mPosX;
+      mCurrentY = mPosY;
+
+      const onMouseMove = (moveEv) => {
+        if (!isModalDragging) return;
+        mPosX = mCurrentX + (moveEv.clientX - mStartX);
+        mPosY = mCurrentY + (moveEv.clientY - mStartY);
+        modalPanel.style.transform = `translate(${mPosX}px, ${mPosY}px)`;
+      };
+
+      const onMouseUp = () => {
+        isModalDragging = false;
+        window.removeEventListener('mousemove', onMouseMove);
+        window.removeEventListener('mouseup', onMouseUp);
+      };
+
+      window.addEventListener('mousemove', onMouseMove);
+      window.addEventListener('mouseup', onMouseUp);
+    });
+
+    function openProjectModal(proj) {
+      currentModalType = 'project';
+      currentActiveProject = proj;
+      modalPanel.className = 'modal-panel wide';
+      modalPanel.style.transform = 'scale(1)';
+      mPosX = 0; mPosY = 0;
+      modalTitle.innerText = proj.title;
+      modalBody.innerHTML = `
+        <div style="width:100%; border-radius:16px; overflow:hidden; background:#f4f4f5; box-shadow:0 8px 24px rgba(0,0,0,0.06);">
+          <img src="${proj.thumbnail}" alt="${proj.title}" style="width:100%; max-height:440px; object-fit:cover; display:block;">
+        </div>
+        <div style="display:flex; flex-direction:column; gap:12px; margin-top:4px;">
+          <div style="display:flex; justify-content:space-between; align-items:baseline; flex-wrap:wrap; gap:8px;">
+            <div>
+              <h2 style="margin:0; font-weight:600; font-size:22px; color:#111827; letter-spacing:-0.03em;">${proj.title}</h2>
+              <p style="margin:4px 0 0 0; font-size:14px; color:#6b7280;">${proj.subtitle}</p>
+            </div>
+            <div style="display:flex; gap:8px; font-size:12px;">
+              <span style="padding:4px 10px; border-radius:20px; background:#f3f4f6; color:#4b5563; font-weight:500;">${proj.year}</span>
+              <span style="padding:4px 10px; border-radius:20px; background:#f3f4f6; color:#4b5563; font-weight:500;">${proj.location}</span>
+            </div>
+          </div>
+          <p style="margin:8px 0 0 0; font-size:15px; line-height:1.6; color:#374151;">${proj.description}</p>
+          <div style="margin-top:12px; padding:12px 16px; border-radius:12px; background:#f9fafb; border:1px solid #f3f4f6; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:8px;">
+            <div style="display:flex; align-items:center; gap:8px;">
+              <span style="font-size:11px; font-weight:600; text-transform:uppercase; letter-spacing:0.05em; color:#9ca3af;">Technical</span>
+              <span style="font-size:13px; color:#4b5563; font-weight:500;">${proj.cameraInfo}</span>
+            </div>
+            <a href="${proj.thumbnail}" target="_blank" style="font-size:13px; color:#0066dd; font-weight:500; text-decoration:none;">View High-Res Master ↗</a>
+          </div>
+        </div>
+      `;
+      modalOverlay.classList.add('active');
+    }
+
+    function toggleAboutModal() {
+      if (isAboutMinimized) {
+        restoreGenieModal('about');
+      } else {
+        openAboutModal();
+      }
+    }
+
+    function openAboutModal() {
+      currentModalType = 'about';
+      modalPanel.className = 'modal-panel';
+      modalPanel.style.transform = 'scale(1)';
+      mPosX = 0; mPosY = 0;
+      modalTitle.innerText = 'About Eunhye';
+      modalBody.innerHTML = `
+        <div style="display:flex; gap:20px; align-items:center;">
+          <img src="https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260624_151824_5f47765e-d133-4a38-b8bc-d968a07881a3.png&w=1920&q=85" alt="Eunhye" style="width:100px; height:100px; border-radius:20px; object-fit:cover; box-shadow:0 8px 20px rgba(0,0,0,0.12);">
+          <div>
+            <h2 style="margin:0; font-weight:600; font-size:22px; color:#111827; letter-spacing:-0.03em;">Eunhye Kim</h2>
+            <p style="margin:4px 0 0 0; font-weight:500; font-size:14px; color:#0066dd;">Visual Storyteller & Fine Art Photographer</p>
+            <p style="margin:4px 0 0 0; font-size:13px; color:#6b7280;">Seoul • Paris • Kyoto</p>
+          </div>
+        </div>
+        <p style="margin:0; font-size:14px; line-height:1.65; color:#374151;">Working primarily in medium format and digital monochromes, my practice investigates the ephemeral architecture of atmosphere, water, and meditative geography. I look for the gentle stillness buried beneath the noise of modern life.</p>
+        <div style="border-top:1px solid #f3f4f6; padding-top:16px; display:flex; flex-direction:column; gap:8px;">
+          <span style="font-size:12px; font-weight:600; text-transform:uppercase; letter-spacing:0.04em; color:#9ca3af;">Selected Exhibitions & Honors</span>
+          <ul style="margin:0; padding-left:18px; font-size:13px; color:#4b5563; line-height:1.7;">
+            <li><strong>2026</strong> — <em>Les Silences Miroirs</em>, Solo Exhibition, Galerie Nuance, Paris</li>
+            <li><strong>2025</strong> — <em>Fluid Horizons</em>, Tokyo Photographic Art Museum</li>
+            <li><strong>2024</strong> — Hasselblad Masters Finalist (Landscape & Nature)</li>
+          </ul>
+        </div>
+      `;
+      modalOverlay.classList.add('active');
+    }
+
+    function toggleNotesModal() {
+      if (isNotesMinimized) {
+        restoreGenieModal('notes');
+      } else {
+        openNotesModal();
+      }
+    }
+
+    function openNotesModal() {
+      currentModalType = 'notes';
+      modalPanel.className = 'modal-panel';
+      modalPanel.style.transform = 'scale(1)';
+      mPosX = 0; mPosY = 0;
+      modalTitle.innerText = 'Studio Notes & Field Diary';
+      modalBody.innerHTML = `
+        <div style="padding:14px 16px; border-radius:12px; background:#f9fafb; border:1px solid #f3f4f6;">
+          <div style="display:flex; justify-content:space-between; margin-bottom:6px;">
+            <strong style="font-size:14px; color:#111827;">On the Quiet Resonance of Fog</strong>
+            <span style="font-size:12px; color:#9ca3af;">June 2026</span>
+          </div>
+          <p style="margin:0; font-size:13px; line-height:1.6; color:#4b5563;">Fog doesn't obscure the landscape—it subtracts distraction until only the pure volume and weight of the horizon remain. The best frames happen when the shutter waits 20 minutes longer than impatience dictates.</p>
+        </div>
+        <div style="padding:14px 16px; border-radius:12px; background:#f9fafb; border:1px solid #f3f4f6;">
+          <div style="display:flex; justify-content:space-between; margin-bottom:6px;">
+            <strong style="font-size:14px; color:#111827;">Current Working Tools</strong>
+            <span style="font-size:12px; color:#9ca3af;">Gear Log</span>
+          </div>
+          <p style="margin:0; font-size:13px; line-height:1.6; color:#4b5563;">
+            • Leica M11-P with 35mm Summilux (for intuition and instinct)<br>
+            • Hasselblad 907X 100C with 45P (for meditative, deliberate tonality)<br>
+            • Gitzo Carbon Series 3 tripod & neutral density filters
+          </p>
+        </div>
+      `;
+      modalOverlay.classList.add('active');
+    }
+
+    // Genie Minimize Trigger
+    function triggerGenieMinimize() {
+      const pRect = modalPanel.getBoundingClientRect();
+      const pCenterX = pRect.left + pRect.width / 2;
+      const pCenterY = pRect.top + pRect.height / 2;
+
+      let targetCenterX = window.innerWidth / 2;
+      let targetCenterY = window.innerHeight - 64 - 36;
+
+      const dockBar = document.getElementById('dock-bar');
+      if (currentModalType === 'about') {
+        const dRect = document.getElementById('dock-about').getBoundingClientRect();
+        targetCenterX = dRect.left + dRect.width / 2;
+        targetCenterY = dRect.top + dRect.height / 2;
+      } else if (currentModalType === 'notes') {
+        const dRect = document.getElementById('dock-notes').getBoundingClientRect();
+        targetCenterX = dRect.left + dRect.width / 2;
+        targetCenterY = dRect.top + dRect.height / 2;
+      } else if (dockBar) {
+        const dRect = dockBar.getBoundingClientRect();
+        targetCenterX = dRect.right - 28;
+        targetCenterY = dRect.top + dRect.height / 2;
+      }
+
+      const targetX = targetCenterX - pCenterX;
+      const targetY = targetCenterY - pCenterY;
+      const skewDir = targetX > 20 ? '5deg' : targetX < -20 ? '-5deg' : '0deg';
+      const tipL = targetX > 20 ? '84%' : targetX < -20 ? '4%' : '44%';
+      const tipR = targetX > 20 ? '98%' : targetX < -20 ? '18%' : '56%';
+
+      modalPanel.style.setProperty('--target-x', `${targetX}px`);
+      modalPanel.style.setProperty('--target-y', `${targetY}px`);
+      modalPanel.style.setProperty('--win-x', `${mPosX}px`);
+      modalPanel.style.setProperty('--win-y', `${mPosY}px`);
+      modalPanel.style.setProperty('--skew-dir', skewDir);
+      modalPanel.style.setProperty('--tip-l', tipL);
+      modalPanel.style.setProperty('--tip-r', tipR);
+
+      modalPanel.classList.add('genie-minimizing');
+      backdrop.style.opacity = '0';
+
+      setTimeout(() => {
+        modalOverlay.classList.remove('active');
+        modalPanel.classList.remove('genie-minimizing');
+        backdrop.style.opacity = '1';
+
+        if (currentModalType === 'about') {
+          isAboutMinimized = true;
+          const el = document.getElementById('dock-about');
+          el.classList.add('minimized');
+          el.classList.add('dock-absorbed');
+          setTimeout(() => el.classList.remove('dock-absorbed'), 350);
+        } else if (currentModalType === 'notes') {
+          isNotesMinimized = true;
+          const el = document.getElementById('dock-notes');
+          el.classList.add('minimized');
+          el.classList.add('dock-absorbed');
+          setTimeout(() => el.classList.remove('dock-absorbed'), 350);
+        } else if (currentModalType === 'project') {
+          minimizedProjectData = currentActiveProject;
+          document.getElementById('minimized-project-img').src = minimizedProjectData.thumbnail;
+          document.getElementById('minimized-project-label').innerHTML = `Restore: ${minimizedProjectData.title}<div class="dock-tooltip-triangle"></div>`;
+          document.getElementById('dock-minimized-section').style.display = 'flex';
+          const el = document.getElementById('dock-project-item');
+          el.classList.add('dock-absorbed');
+          setTimeout(() => el.classList.remove('dock-absorbed'), 350);
+        }
+      }, 320);
+    }
+
+    // Genie Restore Trigger
+    function restoreProjectModal() {
+      if (!minimizedProjectData) return;
+      openProjectModal(minimizedProjectData);
+      modalPanel.classList.add('genie-restoring');
+      document.getElementById('dock-minimized-section').style.display = 'none';
+      minimizedProjectData = null;
+
+      setTimeout(() => {
+        modalPanel.classList.remove('genie-restoring');
+      }, 340);
+    }
+
+    function restoreGenieModal(type) {
+      if (type === 'about') {
+        openAboutModal();
+        isAboutMinimized = false;
+        document.getElementById('dock-about').classList.remove('minimized');
+      } else if (type === 'notes') {
+        openNotesModal();
+        isNotesMinimized = false;
+        document.getElementById('dock-notes').classList.remove('minimized');
+      }
+      modalPanel.classList.add('genie-restoring');
+      setTimeout(() => {
+        modalPanel.classList.remove('genie-restoring');
+      }, 340);
+    }
+
+    function closeModal() {
+      modalOverlay.classList.remove('active');
+      currentModalType = null;
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeModal();
+    });
+  </script>
+</body>
+</html>

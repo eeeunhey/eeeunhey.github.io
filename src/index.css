@@ -1,0 +1,201 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Inter+Display:wght@500;600&display=swap');
+
+:root {
+  --accent: #4A6FA0;
+  --accent-soft: rgba(74,111,160,0.78);
+  --accent-glow: rgba(74,111,160,0.25);
+  --hub-1: #eef8ff;
+  --hub-2: #87acd3;
+  --hub-3: #2e4963;
+  --sprout-body: #dbeaf7;
+  --sprout-foot: #afc8df;
+  --sprout-cheek: #8fb7d9;
+  --sprout-leaf1: #6895bd;
+  --sprout-leaf2: #93b9d8;
+  --cur-arrow: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M4.5 1.8 L4.5 20.4 L9.5 15.6 L12.4 22.2 L15.4 20.9 L12.5 14.4 L19.2 14.0 Z" fill="%231E1E1E" stroke="%23ffffff" stroke-width="1.2" stroke-linejoin="round"/></svg>') 4 2, auto;
+  --cur-hand: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24"><path d="M9.0 3.0A1.6 1.6 0 0 1 12.2 3.0L12.2 9.0C12.2 8.2 12.9 7.6 13.7 7.6C14.5 7.6 15.2 8.2 15.2 9.0L15.2 9.6C15.2 8.9 15.8 8.4 16.5 8.4C17.2 8.4 17.8 8.9 17.8 9.6L17.8 10.4C17.8 9.8 18.3 9.3 18.9 9.3C19.6 9.3 20.1 9.8 20.1 10.4L20.1 15.0C20.1 18.9 17.6 21.8 14.0 21.8L12.4 21.8C10.6 21.8 9.0 20.9 8.1 19.4L5.2 14.6C4.7 13.7 5.0 12.6 5.9 12.1C6.7 11.6 7.8 11.9 8.3 12.7L9.0 13.9Z" fill="%231E1E1E" stroke="%23ffffff" stroke-width="1.2" stroke-linejoin="round" stroke-linecap="round"/></svg>') 10 2, pointer;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(135deg, #dbeaf7, #5b8dc9);
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  cursor: var(--cur-arrow);
+}
+
+button, a, [role="button"], .interactive-cursor {
+  cursor: var(--cur-hand) !important;
+}
+
+@keyframes springIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.spring-in {
+  animation: springIn 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+/* ==========================================================================
+   macOS Genuine Trapezoidal Genie Suction (진짜 맥 OS 지니 사다리꼴 흡입 왜곡)
+   ========================================================================== */
+
+@keyframes genuineGenieMinimize {
+  0% {
+    opacity: 1;
+    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+    transform: translate(var(--win-x, 0px), var(--win-y, 0px)) scale(1, 1) rotateX(0deg) skewX(0deg);
+    transform-origin: bottom center;
+    box-shadow: 0 32px 80px rgba(0, 0, 0, 0.28);
+  }
+  20% {
+    opacity: 1;
+    /* Bottom rapidly reaches towards dock, pinching into a narrow neck */
+    clip-path: polygon(0% 0%, 100% 0%, var(--tip-r, 92%) 100%, var(--tip-l, 72%) 100%);
+    transform: translate(
+        calc(var(--win-x, 0px) + var(--target-x, 0px) * 0.2),
+        calc(var(--win-y, 0px) + var(--target-y, 0px) * 0.22)
+      )
+      scale(0.88, 1.04)
+      rotateX(8deg)
+      skewX(calc(var(--skew-dir, 0deg) * 1.2));
+  }
+  50% {
+    opacity: 0.96;
+    /* Classic macOS Genie Wave: Wide top edge, narrow pinned tip at dock */
+    clip-path: polygon(0% 0%, 100% 0%, var(--tip-r, 96%) 100%, var(--tip-l, 86%) 100%);
+    transform: translate(
+        calc(var(--win-x, 0px) + var(--target-x, 0px) * 0.58),
+        calc(var(--win-y, 0px) + var(--target-y, 0px) * 0.54)
+      )
+      scale(0.58, 0.76)
+      rotateX(18deg)
+      skewX(calc(var(--skew-dir, 0deg) * 2.2));
+  }
+  78% {
+    opacity: 0.88;
+    /* Top collapses down along the curve into the dock icon */
+    clip-path: polygon(10% 10%, 90% 10%, var(--tip-r, 98%) 100%, var(--tip-l, 90%) 100%);
+    transform: translate(
+        calc(var(--win-x, 0px) + var(--target-x, 0px) * 0.86),
+        calc(var(--win-y, 0px) + var(--target-y, 0px) * 0.84)
+      )
+      scale(0.24, 0.38)
+      rotateX(12deg)
+      skewX(calc(var(--skew-dir, 0deg) * 1.4));
+  }
+  94% {
+    opacity: 0.4;
+    clip-path: polygon(40% 40%, 60% 40%, var(--tip-r, 98%) 100%, var(--tip-l, 92%) 100%);
+    transform: translate(
+        calc(var(--win-x, 0px) + var(--target-x, 0px) * 0.98),
+        calc(var(--win-y, 0px) + var(--target-y, 0px) * 0.97)
+      )
+      scale(0.08, 0.1)
+      skewX(0deg);
+  }
+  100% {
+    opacity: 0;
+    clip-path: polygon(50% 100%, 50% 100%, 50% 100%, 50% 100%);
+    transform: translate(var(--target-x, 0px), var(--target-y, 0px)) scale(0.01, 0.01);
+    box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+  }
+}
+
+@keyframes genuineGenieRestore {
+  0% {
+    opacity: 0;
+    clip-path: polygon(50% 100%, 50% 100%, 50% 100%, 50% 100%);
+    transform: translate(var(--target-x, 0px), var(--target-y, 0px)) scale(0.01, 0.01);
+    transform-origin: bottom center;
+  }
+  22% {
+    opacity: 0.7;
+    clip-path: polygon(30% 30%, 70% 30%, var(--tip-r, 96%) 100%, var(--tip-l, 86%) 100%);
+    transform: translate(
+        calc(var(--win-x, 0px) + var(--target-x, 0px) * 0.8),
+        calc(var(--win-y, 0px) + var(--target-y, 0px) * 0.78)
+      )
+      scale(0.28, 0.42)
+      rotateX(12deg)
+      skewX(calc(var(--skew-dir, 0deg) * 1.4));
+  }
+  55% {
+    opacity: 0.94;
+    clip-path: polygon(0% 0%, 100% 0%, var(--tip-r, 94%) 100%, var(--tip-l, 82%) 100%);
+    transform: translate(
+        calc(var(--win-x, 0px) + var(--target-x, 0px) * 0.4),
+        calc(var(--win-y, 0px) + var(--target-y, 0px) * 0.36)
+      )
+      scale(0.68, 0.86)
+      rotateX(16deg)
+      skewX(calc(var(--skew-dir, 0deg) * 1.8));
+  }
+  85% {
+    opacity: 0.98;
+    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+    transform: translate(
+        calc(var(--win-x, 0px) + var(--target-x, 0px) * 0.06),
+        calc(var(--win-y, 0px) + var(--target-y, 0px) * 0.06)
+      )
+      scale(0.98, 1.02)
+      rotateX(4deg)
+      skewX(0deg);
+  }
+  100% {
+    opacity: 1;
+    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+    transform: translate(var(--win-x, 0px), var(--win-y, 0px)) scale(1, 1) rotateX(0deg) skewX(0deg);
+    box-shadow: 0 32px 80px rgba(0, 0, 0, 0.28);
+  }
+}
+
+/* Fast, smooth 320ms duration with snappy Apple easing curve */
+.genie-minimizing {
+  animation: genuineGenieMinimize 0.32s cubic-bezier(0.16, 1, 0.3, 1) forwards !important;
+  pointer-events: none !important;
+}
+
+.genie-restoring {
+  animation: genuineGenieRestore 0.34s cubic-bezier(0.16, 1, 0.3, 1) forwards !important;
+}
+
+/* Dock Bounce & Suction Absorption Effect */
+@keyframes dockAbsorbPop {
+  0% { transform: scale(1); }
+  35% { transform: scale(1.24); filter: drop-shadow(0 0 12px rgba(255,255,255,0.95)); }
+  100% { transform: scale(1); filter: none; }
+}
+
+.dock-absorbed {
+  animation: dockAbsorbPop 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.3);
+}
